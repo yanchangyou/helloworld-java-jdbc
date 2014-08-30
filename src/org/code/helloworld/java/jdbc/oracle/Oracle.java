@@ -8,7 +8,8 @@ import java.sql.Statement;
 
 /**
  * 
- * 描述： oracle 连接数据库测试
+ * 描述： oracle 连接数据库测试<br>
+ * 输出hello, world!
  * 
  * @author yanchangyou@gmail.com
  * @date 2014-08-30 19:56:12
@@ -33,21 +34,20 @@ public class Oracle {
 		Statement stat = conn.createStatement();
 
 		// 查询语句
-		String sql = "select * from dual";
+		String sql = "select 'hello, world!' print from dual";
 
 		// 执行查询
 		ResultSet rs = stat.executeQuery(sql);
-		
-		//获取结果集元数据信息（包含有多少列，列名是什么等信息：适合做一些高级应用）
+
+		// 获取结果集元数据信息（包含有多少列，列名是什么等信息：适合做一些高级应用）
 		ResultSetMetaData rsMeta = rs.getMetaData();
 
 		// 输出列名称
 		int columns = rsMeta.getColumnCount();
 		for (int i = 0; i < columns; i++) {
-			System.out.print(rsMeta.getColumnName(i + 1) + "\t");
+			System.out.print("[" + rsMeta.getColumnName(i + 1) + "]\t");
 		}
 
-		System.out.println();
 		System.out.println();
 
 		while (rs.next()) {// 遍历每一行
