@@ -37,6 +37,8 @@ public class MySql {
 
 		// 执行查询
 		ResultSet rs = stat.executeQuery(sql);
+		
+		//获取结果集元数据信息（包含有多少列，列名是什么等信息：适合做一些高级应用）
 		ResultSetMetaData rsMeta = rs.getMetaData();
 
 		// 输出列名称
